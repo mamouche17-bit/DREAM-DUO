@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff4fa">
+  <title>DREAMDUO — تحدّي شريك الأحلام</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" id="brandHome" aria-label="DREAMDUO الصفحة الرئيسية">♡ DREAMDUO</a>
+      <span class="tag">نسخة تجريبية</span>
+    </header>
+
+    <main>
+      <section id="homeScreen" class="panel hero">
+        <div class="hero-art" aria-hidden="true"><span>🧸</span><span>💗</span><span>✨</span></div>
+        <p class="eyebrow">اصنعوا المفاجأة معًا</p>
+        <h1>هل يعرف أصدقاؤك ذوقك؟</h1>
+        <p class="intro">صمّم شخصية أحلامك، أرسل رابط التحدّي لأصدقائك، واكتشف من فهم اختياراتك أكثر.</p>
+        <button class="btn primary wide" id="startButton">ابدئي تصميم شخصيتك <span>←</span></button>
+        <p class="fineprint">للمتعة فقط — النتائج ليست مقياسًا حقيقيًا للتوافق.</p>
+      </section>
+
+      <section id="builderScreen" class="hidden">
+        <div class="stepbar"><span id="stepProgress"></span></div>
+        <div class="panel">
+          <div class="section-heading">
+            <div><p class="eyebrow">الخطوة 1 من 2</p><h2>صمّم شخصيتك المثالية</h2></div>
+            <span class="step-icon">🎨</span>
+          </div>
+          <label class="field-label" for="ownerNickname">اسم مستعار (اختياري)</label>
+          <input id="ownerNickname" class="text-input" maxlength="24" placeholder="مثلاً: Dreamer">
+          <label class="field-label">نوع الشخصية</label>
+          <div class="choice-grid three" id="ownerGenderChoices">
+            <button class="choice selected" data-value="girl"><span class="choice-emoji">👩🏻‍🎤</span><span>شريكة</span></button>
+            <button class="choice" data-value="boy"><span class="choice-emoji">👨🏻‍🎤</span><span>شريك</span></button>
+            <button class="choice" data-value="any"><span class="choice-emoji">🧑🏻‍🎤</span><span>غير محدد</span></button>
+          </div>
+        </div>
+
+        <div class="builder-columns">
+          <section class="panel">
+            <h2>المظهر الخارجي</h2>
+            <p class="muted">اختاري تفاصيل الشخصية، وستتغير المعاينة مباشرة.</p>
+            <div class="avatar-stage" id="ownerAvatarStage">
+              <div class="avatar" id="ownerAvatar"><span id="ownerAvatarFace">👩🏻‍🎤</span><i id="ownerAccessory">✨</i></div>
+              <div class="avatar-caption" id="avatarCaption">شخصيتك المثالية</div>
+            </div>
+
+            <label class="field-label">الشعر</label>
+            <div class="choice-grid three" id="ownerHairChoices">
+              <button class="choice selected" data-value="waves"><span class="choice-emoji">〰️</span><span>مموج</span></button>
+              <button class="choice" data-value="curly"><span class="choice-emoji">➰</span><span>مجعد</span></button>
+              <button class="choice" data-value="short"><span class="choice-emoji">✂️</span><span>قصير</span></button>
+            </div>
+            <label class="field-label">لون البشرة</label>
+            <div class="swatches" id="ownerSkinChoices">
+              <button class="swatch selected" data-value="light" style="--swatch:#f5d0b5" aria-label="فاتح"></button>
+              <button class="swatch" data-value="medium" style="--swatch:#d99c72" aria-label="متوسط"></button>
+              <button class="swatch" data-value="deep" style="--swatch:#89553d" aria-label="داكن"></button>
+              <button class="swatch" data-value="fantasy" style="--swatch:#d9c9ff" aria-label="خيالي"></button>
+            </div>
+            <label class="field-label" for="ownerEyes">لون العينين</label>
+            <select id="ownerEyes" class="text-input">
+              <option value="brown">بني 🤎</option><option value="green">أخضر 💚</option>
+              <option value="blue">أزرق 💙</option><option value="hazel">عسلي ✨</option>
+            </select>
+            <label class="field-label">لون الملابس</label>
+            <div class="swatches" id="ownerClothesChoices">
+              <button class="swatch selected" data-value="pink" style="--swatch:#f4a7ca" aria-label="وردي"></button>
+              <button class="swatch" data-value="purple" style="--swatch:#a99af5" aria-label="بنفسجي"></button>
+              <button class="swatch" data-value="green" style="--swatch:#91d7bc" aria-label="أخضر"></button>
+              <button class="swatch" data-value="blue" style="--swatch:#8cc9f2" aria-label="أزرق"></button>
+              <button class="swatch" data-value="black" style="--swatch:#494257" aria-label="داكن"></button>
+            </div>
+            <label class="field-label">إكسسوار</label>
+            <div class="choice-grid three" id="ownerAccessoryChoices">
+              <button class="choice selected" data-value="✨"><span class="choice-emoji">✨</span><span>نجوم</span></button>
+              <button class="choice" data-value="🎀"><span class="choice-emoji">🎀</span><span>فيونكة</span></button>
+              <button class="choice" data-value="🕶️"><span class="choice-emoji">🕶️</span><span>نظارات</span></button>
+              <button class="choice" data-value="🎧"><span class="choice-emoji">🎧</span><span>سماعات</span></button>
+              <button class="choice" data-value="💎"><span class="choice-emoji">💎</span><span>جوهرة</span></button>
+              <button class="choice" data-value="none"><span class="choice-emoji">○</span><span>بدون</span></button>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>الصفات الشخصية</h2>
+            <p class="muted">قيّمي أهمية كل صفة من 1 إلى 5.</p>
+            <div id="ownerTraits"></div>
+            <div class="btn-row">
+              <button class="btn secondary" id="cancelBuilder">رجوع</button>
+              <button class="btn primary" id="createChallenge">إنشاء رابط التحدّي ✨</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="shareScreen" class="panel hidden">
+        <div class="success-mark">💌</div>
+        <p class="eyebrow">تم إنشاء شخصيتك</p>
+        <h1>حان وقت تحدّي الأصدقاء!</h1>
+        <div class="avatar-stage"><div class="avatar" id="savedAvatar"><span>👩🏻‍🎤</span><i>✨</i></div></div>
+        <p class="intro">أرسلي الرابط لأصدقائك. سيصمم كل واحد منهم الشخصية التي يظن أنها تناسب ذوقك.</p>
+        <label class="field-label" for="challengeLink">رابط التحدّي</label>
+        <input id="challengeLink" class="text-input" readonly>
+        <div class="btn-row">
+          <button class="btn primary" id="copyChallengeLink">نسخ الرابط</button>
+          <button class="btn secondary" id="previewChallenge">تجربة دور الصديق</button>
+        </div>
+        <div class="notice"><strong>معلومة مهمة:</strong> هذه النسخة تحفظ بيانات الشخصية داخل الرابط لتجربة الفكرة. المشاركات لا تُجمع لدى صاحب الرابط بعد؛ نحتاج إلى قاعدة بيانات ونشر الموقع لتفعيل ذلك.</div>
+        <button class="btn text-button wide" id="makeAnother">إنشاء شخصية أخرى</button>
+      </section>
+
+      <section id="friendScreen" class="hidden">
+        <div class="panel hero compact">
+          <div class="hero-art small-art">💗 🪄</div>
+          <p class="eyebrow">تحدّي DREAMDUO</p>
+          <h1 id="friendHeading">صمّم شخصية تناسب صديقك</h1>
+          <p class="intro">حاول تخمين ذوق صاحب الرابط. لن ترى اختياراته الأصلية قبل إكمال تصميمك.</p>
+        </div>
+        <div class="panel">
+          <label class="field-label" for="friendNickname">اسم مستعار لك (اختياري)</label>
+          <input id="friendNickname" class="text-input" maxlength="24" placeholder="مثلاً: صديقك">
+          <label class="field-label">نوع الشخصية</label>
+          <div class="choice-grid three" id="friendGenderChoices">
+            <button class="choice selected" data-value="girl"><span class="choice-emoji">👩🏻‍🎤</span><span>شريكة</span></button>
+            <button class="choice" data-value="boy"><span class="choice-emoji">👨🏻‍🎤</span><span>شريك</span></button>
+            <button class="choice" data-value="any"><span class="choice-emoji">🧑🏻‍🎤</span><span>غير محدد</span></button>
+          </div>
+          <div class="avatar-stage"><div class="avatar" id="friendAvatar"><span>👩🏻‍🎤</span><i>✨</i></div><div class="avatar-caption">تصميمك لصديقك</div></div>
+          <div class="builder-columns">
+            <section>
+              <label class="field-label">الشعر</label>
+              <div class="choice-grid three" id="friendHairChoices">
+                <button class="choice selected" data-value="waves"><span class="choice-emoji">〰️</span><span>مموج</span></button>
+                <button class="choice" data-value="curly"><span class="choice-emoji">➰</span><span>مجعد</span></button>
+                <button class="choice" data-value="short"><span class="choice-emoji">✂️</span><span>قصير</span></button>
+              </div>
+              <label class="field-label">لون البشرة</label>
+              <div class="swatches" id="friendSkinChoices">
+                <button class="swatch selected" data-value="light" style="--swatch:#f5d0b5" aria-label="فاتح"></button>
+                <button class="swatch" data-value="medium" style="--swatch:#d99c72" aria-label="متوسط"></button>
+                <button class="swatch" data-value="deep" style="--swatch:#89553d" aria-label="داكن"></button>
+                <button class="swatch" data-value="fantasy" style="--swatch:#d9c9ff" aria-label="خيالي"></button>
+              </div>
+              <label class="field-label" for="friendEyes">لون العينين</label>
+              <select id="friendEyes" class="text-input">
+                <option value="brown">بني 🤎</option><option value="green">أخضر 💚</option>
+                <option value="blue">أزرق 💙</option><option value="hazel">عسلي ✨</option>
+              </select>
+              <label class="field-label">لون الملابس</label>
+              <div class="swatches" id="friendClothesChoices">
+                <button class="swatch selected" data-value="pink" style="--swatch:#f4a7ca" aria-label="وردي"></button>
+                <button class="swatch" data-value="purple" style="--swatch:#a99af5" aria-label="بنفسجي"></button>
+                <button class="swatch" data-value="green" style="--swatch:#91d7bc" aria-label="أخضر"></button>
+                <button class="swatch" data-value="blue" style="--swatch:#8cc9f2" aria-label="أزرق"></button>
+                <button class="swatch" data-value="black" style="--swatch:#494257" aria-label="داكن"></button>
+              </div>
+              <label class="field-label">إكسسوار</label>
+              <div class="choice-grid three" id="friendAccessoryChoices">
+                <button class="choice selected" data-value="✨"><span class="choice-emoji">✨</span><span>نجوم</span></button>
+                <button class="choice" data-value="🎀"><span class="choice-emoji">🎀</span><span>فيونكة</span></button>
+                <button class="choice" data-value="🕶️"><span class="choice-emoji">🕶️</span><span>نظارات</span></button>
+                <button class="choice" data-value="🎧"><span class="choice-emoji">🎧</span><span>سماعات</span></button>
+                <button class="choice" data-value="💎"><span class="choice-emoji">💎</span><span>جوهرة</span></button>
+                <button class="choice" data-value="none"><span class="choice-emoji">○</span><span>بدون</span></button>
+              </div>
+            </section>
+            <section>
+              <h2>الصفات التي تتوقعها</h2>
+              <p class="muted">ما الصفات التي تعتقد أنها مهمة لصديقك؟</p>
+              <div id="friendTraits"></div>
+            </section>
+          </div>
+          <button class="btn primary wide" id="revealResult">اكشف النتيجة 💞</button>
+        </div>
+      </section>
+
+      <section id="resultScreen" class="panel hidden">
+        <div class="success-mark">💖</div>
+        <p class="eyebrow">نتيجة التحدّي</p>
+        <h1 class="center">هل فهمت ذوق صديقك؟</h1>
+        <div class="result-avatars">
+          <div><div class="avatar" id="resultOwnerAvatar"><span>👩🏻‍🎤</span><i>✨</i></div><span>الشخصية الأصلية</span></div>
+          <span class="versus">↔</span>
+          <div><div class="avatar" id="resultFriendAvatar"><span>👩🏻‍🎤</span><i>✨</i></div><span>تصميمك</span></div>
+        </div>
+        <div class="score-wrap"><div id="scoreValue">0%</div><span>نسبة التشابه الترفيهية</span></div>
+        <h2>أبرز نقاط التشابه</h2>
+        <ul id="matchDetails" class="match-list"></ul>
+        <div id="resultMessage" class="notice"></div>
+        <p class="fineprint">النتيجة تقارن اختيارات هذه اللعبة فقط، ولا تقيس التوافق الحقيقي بين الأشخاص.</p>
+        <button class="btn primary wide" id="copyResult">نسخ النتيجة</button>
+        <button class="btn secondary wide top-gap" id="backHome">العودة للرئيسية</button>
+      </section>
+    </main>
+    <footer>♡ DREAMDUO · صمّموا، خمّنوا، واكتشفوا التشابه</footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
